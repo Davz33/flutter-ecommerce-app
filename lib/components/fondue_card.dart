@@ -1,36 +1,52 @@
 import 'package:flutter/material.dart';
 
 class FondueCard extends StatelessWidget {
-  final Widget child;
-  final EdgeInsetsGeometry padding;
+  final String title;
+  final String price;
+  final String imageUrl;
   final VoidCallback? onTap;
-  final bool elevated;
 
   const FondueCard({
     super.key,
-    required this.child,
-    this.padding = const EdgeInsets.all(16),
+    required this.title,
+    required this.price,
+    required this.imageUrl,
     this.onTap,
-    this.elevated = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Card(
-      elevation: elevated ? 2 : 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side:
-            elevated
-                ? BorderSide.none
-                : BorderSide(color: theme.colorScheme.outline.withOpacity(0.2)),
-      ),
+      clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(padding: padding, child: child),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: Theme.of(context).textTheme.titleMedium),
+                  Text(
+                    price,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
