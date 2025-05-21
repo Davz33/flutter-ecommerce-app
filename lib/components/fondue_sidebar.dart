@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'fondue_button.dart';
+class FondueSidebarItem {
+  final String title;
+  final IconData icon;
+
+  const FondueSidebarItem({required this.title, required this.icon});
+}
 
 class FondueSidebar extends StatelessWidget {
   final List<FondueSidebarItem> items;
@@ -17,91 +22,50 @@ class FondueSidebar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 280,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-        border: Border(
-          right: BorderSide(
-            color: Theme.of(context).colorScheme.outline.withOpacity(0.2),
-          ),
-        ),
-      ),
+      width: 240,
+      color: Colors.white,
       child: Column(
         children: [
+          const SizedBox(height: 24),
           Padding(
-            padding: const EdgeInsets.all(24),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.shopping_bag,
-                  color: Theme.of(context).colorScheme.primary,
-                  size: 32,
-                ),
-                const SizedBox(width: 12),
-                Text(
-                  'E-Commerce',
-                  style: Theme.of(context).textTheme.displayMedium,
-                ),
-              ],
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              'E-commerce Admin',
+              style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
-          const Divider(),
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              itemCount: items.length,
-              itemBuilder: (context, index) {
-                final item = items[index];
-                final isSelected = index == selectedIndex;
+          const SizedBox(height: 32),
+          ...items.asMap().entries.map((entry) {
+            final index = entry.key;
+            final item = entry.value;
+            final isSelected = index == selectedIndex;
 
-                return ListTile(
-                  selected: isSelected,
-                  selectedTileColor: Theme.of(
-                    context,
-                  ).colorScheme.primary.withOpacity(0.1),
-                  leading: Icon(
-                    item.icon,
-                    color:
-                        isSelected
-                            ? Theme.of(context).colorScheme.primary
-                            : Theme.of(context).colorScheme.secondary,
-                  ),
-                  title: Text(
-                    item.title,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color:
-                          isSelected
-                              ? Theme.of(context).colorScheme.primary
-                              : Theme.of(context).colorScheme.onSurface,
-                      fontWeight:
-                          isSelected ? FontWeight.w600 : FontWeight.normal,
-                    ),
-                  ),
-                  onTap: () => onItemSelected(index),
-                );
-              },
-            ),
-          ),
-          const Divider(),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: FondueButton(
-              text: 'New Product',
-              onPressed: () {
-                // TODO: Implement new product
-              },
-              icon: Icons.add,
-            ),
-          ),
+            return ListTile(
+              leading: Icon(
+                item.icon,
+                color:
+                    isSelected
+                        ? Theme.of(context).colorScheme.primary
+                        : Theme.of(
+                          context,
+                        ).colorScheme.onSurface.withOpacity(0.6),
+              ),
+              title: Text(
+                item.title,
+                style: TextStyle(
+                  color:
+                      isSelected
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.onSurface,
+                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                ),
+              ),
+              selected: isSelected,
+              onTap: () => onItemSelected(index),
+            );
+          }),
         ],
       ),
     );
   }
-}
-
-class FondueSidebarItem {
-  final String title;
-  final IconData icon;
-
-  const FondueSidebarItem({required this.title, required this.icon});
 }
