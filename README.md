@@ -1,6 +1,18 @@
-# myapp
+# Flutter E-commerce App
 
-A new Flutter project.
+A modern e-commerce application built with Flutter, using Frontify's Fondue design system.
+
+## Design System
+
+This project uses [Frontify's Fondue](https://github.com/Frontify/fondue) design system for consistent UI components and styling.
+
+## Features
+
+- Modern e-commerce interface
+- Product grid display
+- Navigation sidebar
+- Responsive design
+- Fondue design system integration
 
 ## Getting Started
 
