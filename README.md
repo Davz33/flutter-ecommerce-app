@@ -10,25 +10,20 @@ A modern, responsive e-commerce application built with Flutter, using Frontify's
 - Fondue design system integration for consistent look and feel
 - Search bar for products (mobile and desktop)
 - Add to Cart button on each product card
-- Runs on iOS, Android, and web
+- Runs on iOS and web
 
 ## Getting Started
 
 ### Prerequisites
 - [Flutter SDK](https://docs.flutter.dev/get-started/install)
 - Xcode (for iOS)
-- Android Studio (for Android)
+
 
 ### Running the App
 
 **iOS:**
 ```
 flutter run -d ios
-```
-
-**Android:**
-```
-flutter run -d android
 ```
 
 **Web:**
