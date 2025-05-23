@@ -1,6 +1,6 @@
 # Flutter E-commerce App
 
-A modern, responsive e-commerce application built with Flutter, using Frontify's [Fondue](https://github.com/Frontify/fondue) design system. This project demonstrates a cross-platform shopping experience with a consistent UI on web, iOS, and Android.
+A modern, responsive e-commerce application built with Flutter, using template components inspired by Frontify's [Fondue](https://github.com/Frontify/fondue) design system. This project demonstrates a cross-platform shopping experience with a consistent UI on web, iOS, and Android.
 
 ## Features
 
@@ -35,4 +35,4 @@ For more help, see the [Flutter documentation](https://docs.flutter.dev/).
 
 ## Design System
 
-This project uses [Frontify's Fondue](https://github.com/Frontify/fondue) design system for consistent UI components and styling.
+This project takes inspiration from [Frontify's Fondue](https://github.com/Frontify/fondue) design system for consistent UI components and styling.
